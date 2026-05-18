@@ -17,6 +17,7 @@ import dev.esophose.playerparticles.util.ParticleUtils;
 import dev.rosewood.rosegarden.utils.StringPlaceholders;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
@@ -426,6 +427,18 @@ public class ParticlePair {
 
     public boolean isHiddenWhenLimited() {
         return this.effect.isHiddenWhenLimited() || this.style.isHiddenWhenLimited();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ParticlePair)) return false;
+        ParticlePair that = (ParticlePair) o;
+        return this.effect == that.effect && Objects.equals(this.style, that.style) && this.getDataString().equals(that.getDataString());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.effect, this.style, this.getDataString());
     }
 
     /**
