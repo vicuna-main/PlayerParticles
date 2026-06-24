@@ -171,7 +171,7 @@ public abstract class GuiInventory {
      * @param event The InventoryClickEvent triggered when the player clicks in a GuiInventory
      */
     public void onClick(InventoryClickEvent event) {
-        if (event.getClickedInventory() == null || !event.getClickedInventory().equals(this.inventory)) return;
+        if (event.getClickedInventory() == null || event.getRawSlot() >= this.inventory.getSize()) return;
         
         int slot = event.getSlot();
         boolean isShiftClick = event.isShiftClick();

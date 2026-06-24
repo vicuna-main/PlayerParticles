@@ -98,7 +98,7 @@ public class GuiManager extends Manager implements Listener, Runnable {
         List<Player> toClose = new ArrayList<>();
         for (Player player : Bukkit.getOnlinePlayers()) {
             for (GuiInventory inventory : this.guiInventories) {
-                if (inventory.getPPlayer().getUniqueId().equals(player.getUniqueId()) && inventory.getInventory().equals(player.getOpenInventory().getTopInventory())) {
+                if (inventory.getPPlayer().getUniqueId().equals(player.getUniqueId())) {
                     toClose.add(player);
                     break;
                 }
